@@ -14,6 +14,11 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+                .padding()
+                .background(Color.yellow, in: RoundedRectangle(cornerRadius: 8.0))
+            Text("The World of AI.")
+                .padding()
+                .background(Color.blue, in: RoundedRectangle(cornerRadius: 8.0))
         }
         .padding()
     }
