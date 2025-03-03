@@ -17,26 +17,10 @@ struct ContentView: View {
                 .font(.system(size: 32, weight: .black, design: .rounded))
         }.padding(48)
         VStack(spacing: 24) {
-            Text("Hello, world!")
-                .foregroundColor(.white)
-                .font(.system(size: 20, weight: .bold, design: .rounded))
-                .padding()
-                .background(Color.green, in: RoundedRectangle(cornerRadius: 16.0))
-            Text("The World of AI.")
-                .foregroundColor(.white)
-                .font(.system(size: 20, weight: .bold, design: .rounded))
-                .padding()
-                .background(Color.blue, in: RoundedRectangle(cornerRadius: 16.0))
-            Text("I am scared boss.")
-                .foregroundColor(.white)
-                .font(.system(size: 20, weight: .bold, design: .rounded))
-                .padding()
-                .background(Color.green, in: RoundedRectangle(cornerRadius: 16.0))
-            Text("Just chill and chat guys!")
-                .foregroundColor(.white)
-                .font(.system(size: 20, weight: .bold, design: .rounded))
-                .padding()
-                .background(Color.blue, in: RoundedRectangle(cornerRadius: 16.0))
+            ChatBubble(isSender: false, message: "Hello World!")
+            ChatBubble(isSender: true, message: "The World of AI.")
+            ChatBubble(isSender: false, message: "I am scared boss.")
+            ChatBubble(isSender: true, message: "Just chill and chat guys!")
         }
         .padding()
     }
@@ -44,4 +28,26 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+struct ChatBubble: View {
+    let isSender: Bool
+    let message: String
+    
+    
+    var bubbleColor: Color {
+        if isSender {
+            return Color.blue
+        } else {
+            return Color.green
+        }
+    }
+    
+    var body: some View {
+        Text(message)
+            .foregroundColor(.white)
+            .font(.system(size: 20, weight: .bold, design: .rounded))
+            .padding()
+            .background(bubbleColor, in: RoundedRectangle(cornerRadius: 16.0))
+    }
 }
