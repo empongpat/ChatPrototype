@@ -44,10 +44,18 @@ struct ChatBubble: View {
     }
     
     var body: some View {
-        Text(message)
-            .foregroundColor(.white)
-            .font(.system(size: 20, weight: .bold, design: .rounded))
-            .padding()
-            .background(bubbleColor, in: RoundedRectangle(cornerRadius: 16.0))
+        HStack {
+            if isSender {
+                Spacer()
+            }
+            Text(message)
+                .foregroundColor(.white)
+                .font(.system(size: 20, weight: .bold, design: .rounded))
+                .padding()
+                .background(bubbleColor, in: RoundedRectangle(cornerRadius: 16.0))
+            if !isSender {
+                Spacer()
+            }
+        }
     }
 }
